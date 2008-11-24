@@ -112,7 +112,7 @@
          (content-type (assoc-ref alist "CONTENT_TYPE"))
          (content-length (assoc-ref alist "CONTENT_LENGTH")))
     ;(unless (equal? "text/xml" content-type)
-
+    (unless (#/text\/xml/ content-type)
       (raise (make <invalid-content-type> :content-type content-type)))
     (unless (and content-length (string->number content-length))
       (raise (make <invalid-content-length> :content-length content-length)))
